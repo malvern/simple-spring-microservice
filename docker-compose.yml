@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  contact-search-service:
+    image: contact-service:1.0.0
+    container_name: contact-service
+    build:
+        context: .
+        dockerfile: Dockerfile
+    restart:
+      on-failure
+    ports:
+        - "9000:9000"

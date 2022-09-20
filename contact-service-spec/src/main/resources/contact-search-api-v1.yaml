@@ -1,0 +1,68 @@
+openapi: 3.0.3
+info:
+  title: Contact Search Service
+  description: Contact Search Service
+  version: 1.0.0
+servers:
+  - url: 'https://localhost:8080'
+tags:
+  - name: ContactsSearch
+    description: Contact Search API
+paths:
+  /getusercontacts:
+    get:
+      tags:
+        - SearchContact
+      summary: Search users by username or id
+      description:  Search users contacts information using username or id
+      operationId: getUserContacts
+      parameters:
+        - name: username
+          in: query
+          description: username that will be considered during search
+          schema:
+            type: string
+            nullable: true
+        - name: id
+          in: query
+          description: id that will be considered during search
+          schema:
+            type: integer
+            format: int64
+            nullable: true
+      responses:
+        '200':
+          description: found contacts with the given username or id
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserContactResponse'
+        '404':
+          description: no contact found with given username or id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseCode'
+        '500':
+          description: internal error occurred during search
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseCode'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseCode'
+components:
+  schemas:
+    UserContactResponse:
+      $ref: 'schemas/response/body/user-contact-response.yaml'
+    ResponseCode:
+      $ref: 'schemas/response/error/response-code.yaml'
+
+
+  

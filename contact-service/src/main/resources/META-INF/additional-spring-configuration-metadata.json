@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "api.search.url",
+      "type": "java.lang.String",
+      "description": "Description for api.search.url."
+    }
+  ] }

@@ -1,0 +1,10 @@
+springdoc:
+  swagger-ui:
+    path: /simple/search-api.html
+  api-docs:
+    path: /simple/v3/api-docs
+server:
+  port: 9000
+api:
+  search:
+    url: "https://jsonplaceholder.typicode.com/users"

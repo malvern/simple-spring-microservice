@@ -1,0 +1,8 @@
+title: response code
+type: object
+properties:
+  id:
+    type: integer
+    format: int64
+  narrative:
+    type: string
